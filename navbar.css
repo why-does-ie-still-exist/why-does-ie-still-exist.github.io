@@ -1,0 +1,142 @@
+/*based on John Urbank's "Simple, CSS only, responsive menu" (https://codepen.io/jurbank/pen/veGnb)*/
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+  position: relative;
+  text-align: left;
+}
+
+nav li {
+  float: left;
+}
+
+
+nav ul:after {
+  clear: both;
+}
+
+nav ul:before,
+nav ul:after {
+    content: " ";
+    display: table;
+}
+
+nav {
+  font-size: 95%;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  background: #2B2B2B;
+  background-image: -webkit-linear-gradient(bottom, #2B2B2B 7%, #333333 100%);
+  background-image: -o-linear-gradient(bottom, #2B2B2B 7%, #333333 100%);
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(7%, #2B2B2B), to(#333333));
+  background-image: linear-gradient(bottom, #2B2B2B 7%, #333333 100%);
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 1px #0E0E0E;
+  -webkit-box-shadow: 2px 2px 3px #888;
+  box-shadow: 2px 2px 3px #888;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+nav ul.primary li a {
+  display: block;
+  padding: 20px 30px;
+  border-right: 1px solid #3D3D3D;
+}
+
+nav ul.primary li:last-child a {
+  border-right: none;
+}
+
+nav ul.primary li a:hover {
+  color: #000;
+}
+
+nav ul.sub {
+  position: absolute;
+  z-index: 200;
+  -webkit-box-shadow: 2px 2px 0 #BEBEBE;
+          box-shadow: 2px 2px 0 #BEBEBE;
+  width: 35%;
+  display:none;
+}
+
+nav ul.sub li {
+  float: none;
+  margin: 0;
+}
+
+nav ul.sub li a {
+  border-bottom: 1px dotted #ccc;
+  border-right: none;
+  color: #000;
+  padding: 15px 30px;
+}
+
+nav ul.sub li:last-child a {
+  border-bottom: none;
+}
+
+nav ul.sub li a:hover {
+  color: #000;
+  background: #eeeeee;
+}
+
+nav ul.primary li:hover ul {
+  display: block;
+  background: #fff;
+}
+
+nav ul.primary li:hover a {
+  background: #fff;
+  color: #666;
+  text-shadow: none;
+}
+
+nav ul.primary li:hover > a{
+  color: #000;
+}
+
+@media only screen and (max-width: 600px) {
+  nav li {
+    float: none;
+  }
+  
+  nav ul.primary li:hover a {
+    background: none;
+    color: #8B8B8B;
+    text-shadow: 1px 1px #000;
+  }
+
+  nav ul.primary li:hover ul {
+    display: block;
+    background: #272727;
+    color: #fff;
+  }
+  
+  nav ul.sub {
+    display: block;  
+    position: static;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    width: 100%;
+  }
+  
+  nav ul.sub li a {
+    background: #272727;
+  	border: none;
+    color: #8B8B8B;
+  }
+  
+  nav ul.sub li a:hover {
+    color: #ccc;
+    background: none;
+  }
+}
