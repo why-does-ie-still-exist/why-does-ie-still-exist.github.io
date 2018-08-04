@@ -28,6 +28,7 @@ nav ul:after {
 }
 
 nav {
+  margin-top: -2.5%;
   font-size: 95%;
   text-transform: uppercase;
   text-align: center;
@@ -105,6 +106,9 @@ nav ul.primary li:hover > a{
 }
 
 @media only screen and (max-width: 600px) {
+  nav {
+    margin-top: -1.5%;
+  }
   nav li {
     float: none;
   }
