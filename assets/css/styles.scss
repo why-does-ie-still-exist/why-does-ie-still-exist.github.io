@@ -1,0 +1,41 @@
+---
+---
+
+@import "{{ site.theme }}";
+.page-header {
+  background-color: #cdfffb;
+  /* IE9, iOS 3.2+ */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxyYWRpYWxHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjcwLjcxMDY3ODExODY1NDc2JSI+PHN0b3Agc3RvcC1jb2xvcj0iI2Q3ZmZmZiIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjAuMTM1Ii8+PHN0b3Agc3RvcC1jb2xvcj0iI2Q3ZmZmYyIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjAuMjUzIi8+PHN0b3Agc3RvcC1jb2xvcj0iI2M1ZmZmYSIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjAuNjQ1OTk5OTk5OTk5OTk5OSIvPjwvcmFkaWFsR3JhZGllbnQ+PHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI3ZzZ2cpIiAvPjwvc3ZnPg==);
+  /* Android 2.3- hack (needed for the actual radial gradient) */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxyYWRpYWxHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjcwLjcxMDY3ODExODY1NDc2JSI+PHN0b3Agc3RvcC1jb2xvcj0iI2Q3ZmZmZiIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjAuMTM1Ii8+PHN0b3Agc3RvcC1jb2xvcj0iI2Q3ZmZmYyIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjAuMjUzIi8+PHN0b3Agc3RvcC1jb2xvcj0iI2M1ZmZmYSIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjAuNjQ1OTk5OTk5OTk5OTk5OSIvPjwvcmFkaWFsR3JhZGllbnQ+PHJlY3QgeD0iLTUwIiB5PSItNTAiIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAxIiBmaWxsPSJ1cmwoI3ZzZ2cpIiAvPjwvc3ZnPg==),
+    -webkit-gradient(radial, center center, 0, center center, 362, color-stop(0.135, rgb(215, 255, 255)), color-stop(0.253, rgb(215, 255, 252)), color-stop(0.646, rgb(197, 255, 250)));
+  /* Android 2.3 */
+  background-image: -webkit-radial-gradient(
+    center center,
+    circle closest-corner,
+    rgb(215, 255, 255) 13.5%,
+    rgb(215, 255, 252) 25.3%,
+    rgb(197, 255, 250) 64.6%
+  );
+  /* IE10+ */
+  background-image: radial-gradient(
+    circle closest-corner at center center,
+    rgb(215, 255, 255) 13.5%,
+    rgb(215, 255, 252) 25.3%,
+    rgb(197, 255, 250) 64.6%
+  );
+  background-image: -ms-radial-gradient(
+    center center,
+    circle closest-corner,
+    rgb(215, 255, 255) 13.5%,
+    rgb(215, 255, 252) 25.3%,
+    rgb(197, 255, 250) 64.6%
+  );
+}
+
+/* IE8- CSS hack */
+@media \0screen\, screen\9 {
+  .gradient {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffd7ffff",endColorstr="#ffc5fffa",GradientType=0);
+  }
+}
