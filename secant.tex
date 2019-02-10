@@ -1,0 +1,200 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{soul,xcolor}
+\usepackage[latin1]{inputenc}
+\DeclareMathOperator{\seci}{sec^{-1}}
+\newcommand{\brek}{\\[1.5em]}
+\title{Integral of Secant Inverse (the Long Way)}
+\author{Michael Owens}
+\date{02/04/2019 A.D.\\v1.2}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\clearpage
+\pagenumbering{arabic}
+
+\begin{center}
+\begin{equation}
+\int{\seci(x)dx}
+\end{equation}
+\brek
+\begin{equation}
+du=dx \qquad  v = \seci (x) 
+\end{equation}
+\begin{equation}
+u=x \qquad dv=\dfrac{dx}{x\sqrt{x^2 - 1}}
+\end{equation}
+\brek
+\begin{equation}
+x\seci(x) - \int\dfrac{x}{x\sqrt{x^2 -1}} dx
+\end{equation}
+
+\begin{equation}
+x\seci(x) - \int\dfrac{1}{\sqrt{x^2 -1}} dx
+\end{equation}
+
+\begin{equation}
+x\seci(x) - \int{(x^2 -1)^{-\frac{1}{2}}} dx
+\end{equation}
+
+\begin{equation}
+dw=dx \qquad  z = (x^2 -1)^{-\frac{1}{2}}
+\end{equation}
+\begin{equation}
+w=x \qquad dz=-\frac{1}{2} (x^2 -1)^{-\frac{3}{2}} * 2x dx
+\end{equation}
+\begin{equation}
+\qquad dz=-x(x^2 -1)^{-\frac{3}{2}} dx
+\end{equation}
+
+\begin{equation}
+x\seci(x) -
+\left(\dfrac{x}{\sqrt{x^2 -1}}
+- \int{\dfrac{-(x^2)}{(x^2 -1)^{\frac{3}{2}}}} dx\right)
+\end{equation}
+
+\begin{equation}
+x\seci(x) -
+\dfrac{x}{\sqrt{x^2 -1}}
++ \int{\dfrac{(x^2)}{(x^2 -1)^{\frac{3}{2}}}} dx
+\end{equation}
+
+\begin{gather}
+a=x^2\\
+da=2x\\
+\frac{1}{2}da = xdx\\
+x=\sqrt{a}
+\end{gather}
+
+\begin{equation}
+x\seci(x) -
+\dfrac{x}{\sqrt{x^2 -1}}
++ \frac{1}{2}\int{\dfrac{\sqrt{a}}{(a-1)^\frac{3}{2}}} da
+\end{equation}
+\begin{equation}
+x\seci(x) -
+\dfrac{x}{\sqrt{x^2 -1}}
++ \frac{1}{2}\int{\sqrt{\dfrac{a}{(a-1)^3}}} da
+\end{equation}
+
+\begin{gather}
+b=a-1\\
+db=da\\
+a=b+1
+\end{gather}
+
+\begin{equation}
+x\seci(x) -
+\dfrac{x}{\sqrt{x^2 -1}}
++ \frac{1}{2}\int{\sqrt{\dfrac{b+1}{b^3}}} db
+\end{equation}
+
+\begin{equation}
+x\seci(x) -
+\dfrac{x}{\sqrt{x^2 -1}}
++ \frac{1}{2}\int{\dfrac{1}{b}\sqrt{\dfrac{b+1}{b}}} db
+\end{equation}
+
+\begin{equation}
+x\seci(x) -
+\dfrac{x}{\sqrt{x^2 -1}}
++ \frac{1}{2}\int{\dfrac{b}{b^2}\sqrt{\dfrac{b+1}{b}}} db
+\end{equation}
+
+\begin{gather}
+g=\dfrac{b+1}{b}\\
+dg=\dfrac{bdb-(b+1)db}{b^2}\\
+dg=-\dfrac{db}{b^2}\\
+-dg=b^{-2} db\\
+b=\dfrac{1}{g-1}
+\end{gather}
+
+\begin{equation}
+x\seci(x) -
+\dfrac{x}{\sqrt{x^2 -1}}
+- \frac{1}{2}\int{\dfrac{\sqrt{g}}{g-1}} dg
+\end{equation}
+
+\begin{equation}
+x\seci(x) -
+\dfrac{x}{\sqrt{x^2 -1}}
+- \frac{1}{2}\int{\dfrac{1}{\sqrt{g}}*\dfrac{g}{g-1}} dg
+\end{equation}
+
+\begin{gather}
+h^2 = g\\
+h = \sqrt{g}\\
+dh = -\dfrac{1}{2} g^{-\frac{1}{2}} dg\\
+-2dh = \dfrac{1}{\sqrt{g}} dg
+\end{gather}
+
+\begin{equation}
+x\seci(x) -
+\dfrac{x}{\sqrt{x^2 -1}}
++ \int{\dfrac{h^2}{h^2-1}} dh
+\end{equation}
+
+\begin{equation}
+x\seci(x) -
+\dfrac{x}{\sqrt{x^2 -1}}
++ \int{\dfrac{h^2 -1 +1}{h^2-1}} dh
+\end{equation}
+
+\begin{equation}
+x\seci(x) -
+\dfrac{x}{\sqrt{x^2 -1}}
++\int{\dfrac{h^2 -1}{h^2-1} + \dfrac{1}{h^2-1}} dh
+\end{equation}
+
+\begin{equation}
+x\seci(x) -
+\dfrac{x}{\sqrt{x^2 -1}}
++\int{\left (1 + \dfrac{1}{h^2-1} \right)} dh
+\end{equation}
+
+\begin{equation}
+x\seci(x) -
+\dfrac{x}{\sqrt{x^2 -1}}
++h
++\int{\dfrac{1}{(h+1)(h-1)}} dh
+\end{equation}
+
+\begin{gather}
+\dfrac{A}{h-1} \qquad \dfrac{B}{h+1}\\
+1=B(h+1)+A(h-1)\\
+B = \frac{1}{2} \qquad A = -\frac{1}{2}
+\end{gather}
+
+\begin{equation}
+x\seci(x) -
+\dfrac{x}{\sqrt{x^2 -1}}
++h
++\left(-\frac{1}{2}\ln \left\lvert h-1 \right\rvert +\frac{1}{2}\ln \left\lvert h+1 \right\rvert \right) + c
+\end{equation}
+
+\begin{equation}
+x\seci(x) -
+\dfrac{x}{\sqrt{x^2 -1}}
++h
+-\frac{1}{2}\ln \left\lvert h-1 \right\rvert + \frac{1}{2}\ln \left\lvert h+1 \right\rvert + c
+\end{equation}
+
+\begin{gather}
+h = \sqrt{\dfrac{x^2}{x^2 - 1}}
+\end{gather}
+
+\begin{equation}
+x\seci(x) -
+\dfrac{x}{\sqrt{x^2 -1}}
++\sqrt{\dfrac{x^2}{x^2 - 1}}
+-\frac{1}{2}\ln \left\lvert \sqrt{\dfrac{x^2}{x^2 - 1}}-1 \right\rvert + \frac{1}{2}\ln \left\lvert \sqrt{\dfrac{x^2}{x^2 - 1}}+1 \right\rvert + c
+\end{equation}
+
+\begin{equation}
+x\seci(x)
+-\frac{1}{2}\ln \left\lvert \sqrt{\dfrac{x^2}{x^2 - 1}}-1 \right\rvert + \frac{1}{2}\ln \left\lvert \sqrt{\dfrac{x^2}{x^2 - 1}}+1 \right\rvert + c
+\end{equation}
+
+\end{center}
+\end{document}
