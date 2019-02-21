@@ -1,0 +1,38 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage[latin1]{inputenc}
+\usepackage{soul,xcolor}
+\usepackage{stackengine}
+\usepackage{tcolorbox}
+\setstcolor{red}
+\sethlcolor{yellow}
+\newcommand\slashzero{\stackinset{c}{}{c}{}{/}{0}}
+\newcommand{\modo}[2]{\overbrace{ #1 }^{\makebox[0pt]{\text{{\scriptsize #2}}}}}
+\newcommand{\modu}[2]{\underbrace{ #1 }_{\makebox[0pt]{\text{{\scriptsize #2}}}}}
+\newcommand{\dmodo}[3]{\modo{#1}{$\genfrac{}{}{0pt}{0}{\text{#2}}{\text{#3}}$}}
+\newcommand{\dmodu}[3]{\modu{#1}{$\genfrac{}{}{0pt}{0}{\text{#2}}{\text{#3}}$}}
+\newcommand{\qs}{\qquad}
+\title{Running out of ``Math Letters"}
+\author{Michael Owens}
+\date{02/19/2019 A.D.\\v1.0}
+\setul{}{0.3ex}
+\newtcolorbox{mybox}{colback=yellow,colframe=black,before=\begin{center},after=\end{center}}
+
+\begin{document}
+\maketitle
+\pagenumbering{gobble}
+\begin{center}
+\begin{mybox}
+\center The Mathematically Unused English Letters
+\end{mybox}
+\begin{gather*}
+\modu{\modo{a}{Area} \qs \dmodo{b}{Base}{Size} \qs \modo{c}{Constant}}{Quadratic Formula} \qs \dmodo{d}{Distance Formula/}{Diameter} \qs \modu{e}{Euler's Constant}\\
+\modu{f \qs g}{Functions,\ Composing\ Functions} \qs \modo{h}{Height} \qs \modu{i}{$\sqrt{-1}$} \qs \text{\hl{j}} \qs \dmodo{k}{Combinatorics/}{Set Enumeration}\\
+\modu{l}{Length} \qs \dmodo{m}{Slope of}{a Line}  \qs \dmodu{n}{Unknown Number}{Set Enumeration} \qs \dmodo{\text{\st{o}}}{Looks like}{a \slashzero} \qs \modu{p}{Probability}\\
+\text{\hl{q}} \qs \modo{r}{Rate/Radius} \qs \dmodu{s}{Speed/ Probability}{of Success} \qs \modo{t}{Time} \qs \modu{\dmodo{u}{u-du}{Substitution} \qs \modo{v}{Velocity}}{Integration by Parts}\\
+\modu{w}{Width} \dmodo{\qs x \qs y}{Elemetary Algebra/}{Planar Geometry} \qs \modu{z}{Depth}\\
+\end{gather*}
+
+\end{center}
+\end{document}
