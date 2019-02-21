@@ -5,7 +5,7 @@ _A blog about cool math and stuff_
 | Check it out:                                                     |
 | ----------------------------------------------------------------- |
 | [Running out of Letters for Math](alphabet.pdf) [ˢᵒᵘʳᶜᵉ](alphabet.tex) _February 9th, 2019_ |
-| [The Integral of Secant Inverse](Secant.pdf) [ˢᵒᵘʳᶜᵉ](Secant.tex) _February 9th, 2019_ |
+| [The Integral of Secant Inverse](secant.pdf) [ˢᵒᵘʳᶜᵉ](secant.tex) _February 9th, 2019_ |
 
 ### FAQABA(Frequently asked questions about the author):
 
