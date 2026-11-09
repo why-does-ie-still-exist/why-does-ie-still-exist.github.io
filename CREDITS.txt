@@ -1,0 +1,6 @@
+﻿Credits
+
+Favicon: the Mage emoji from FrankMoji by Frank Rausch (https://frankmoji.com),
+used unmodified under CC BY-NC-ND 4.0 (https://creativecommons.org/licenses/by-nc-nd/4.0/).
+
+Fonts: RuneScape fonts from https://github.com/RuneStar/fonts (CC0).
