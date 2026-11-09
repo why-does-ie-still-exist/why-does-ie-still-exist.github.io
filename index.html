@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Enter</title>
+<style>
+  /* RuneScape fonts from https://github.com/RuneStar/fonts (CC0). Pixel fonts: use 16px multiples. */
+  @font-face { font-family: "RS Quill 8"; src: url("fonts/RuneScape-Quill-8.ttf") format("truetype"); font-display: block; }
+  @font-face { font-family: "RS Quill";   src: url("fonts/RuneScape-Quill.ttf") format("truetype");   font-display: block; }
+  @font-face { font-family: "RS Bold 12"; src: url("fonts/RuneScape-Bold-12.ttf") format("truetype"); font-display: block; }
+  @font-face { font-family: "RS Plain 12"; src: url("fonts/RuneScape-Plain-12.ttf") format("truetype"); font-display: block; }
+
+  :root { --ink: #3a2410; --ink-soft: #6b4a22; --ink-hot: #8c1c0c; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  body { font-family: "RS Plain 12", monospace; -webkit-font-smoothing: none; font-smooth: never; text-rendering: optimizeSpeed; }
+  canvas { display: block; }
+  #scroll > canvas { filter: drop-shadow(0 8px 16px rgba(0,0,0,.6)); }
+
+  #view { position: fixed; inset: 0; width: 100%; height: 100%; }
+
+  /* ---------- the door ---------- */
+  /* The door itself is drawn in the 3D scene. This layer only holds the ring button and the hint. */
+  #door { position: fixed; inset: 0; z-index: 3; }
+  #ring { position: absolute; padding: 0; border: 0; background: none; cursor: pointer; transform-origin: 50% 14%; -webkit-tap-highlight-color: transparent; }
+  #ring canvas { width: 100%; height: 100%; }
+  #ring:hover, #ring:focus-visible { animation: sway 1.1s ease-in-out infinite; outline: none; }
+  #ring.knock { animation: knock .5s ease-in 1; }
+  @keyframes sway { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+  @keyframes knock { 0% { transform: scale(1); } 35% { transform: scale(1.18) translateY(-6%); } 60% { transform: scale(.96) translateY(3%); } 100% { transform: scale(1); } }
+  #hint { position: absolute; left: 0; right: 0; bottom: 9%; text-align: center; color: #e9d7a8; font: 32px "RS Quill 8", monospace; text-shadow: 2px 2px 0 #000; opacity: 0; animation: hint 1s 2.2s forwards; pointer-events: none; }
+  @keyframes hint { to { opacity: .9; } }
+
+  /* ---------- the scroll ---------- */
+  #scroll { position: fixed; z-index: 2; right: 4vw; top: 50%; width: min(44vw, 560px); transform: translateY(-50%) scale(.9); opacity: 0; pointer-events: none;
+            transition: opacity .5s, transform .5s cubic-bezier(.2,1.3,.4,1); color: var(--ink); }
+  #scroll.show { opacity: 1; transform: translateY(-50%) scale(1); pointer-events: auto; }
+  #scroll > canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+  #scroll .pad { padding: 44px 44px 48px; }
+  #scroll h1 { margin: 0 0 12px; font: 32px/1 "RS Quill", serif; color: var(--ink-hot); }
+  #scroll p { margin: 0 0 18px; font: 16px/18px "RS Bold 12", monospace; min-height: 76px; }
+  @media (min-width: 1200px) and (min-aspect-ratio: 1/1) { #scroll p { font: 32px/34px "RS Plain 12", monospace; min-height: 172px; } #scroll { width: min(46vw, 680px); } }
+  #scroll ol { list-style: none; margin: 0; padding: 0; }
+  #scroll li + li { margin-top: 4px; }
+  #scroll button { all: unset; display: block; width: 100%; cursor: pointer; font: 32px/34px "RS Quill 8", monospace; color: var(--ink); padding: 2px 6px 2px 30px; position: relative; }
+  #scroll button::before { content: attr(data-n) "."; position: absolute; left: 4px; color: var(--ink-soft); }
+  #scroll button:hover, #scroll button:focus-visible { color: var(--ink-hot); background: rgba(92,56,20,.14); }
+  #scroll button:hover::after, #scroll button:focus-visible::after { content: " <"; }
+
+  #skip { all: unset; position: fixed; z-index: 2; right: 12px; top: 10px; cursor: pointer; color: #e9d7a8; font: 16px "RS Bold 12", monospace; text-shadow: 1px 1px 0 #000; opacity: .7; padding: 6px 8px; display: none; }
+  #skip.on { display: block; }
+
+  @media (max-aspect-ratio: 1/1), (max-width: 720px) {
+    #scroll { right: 3vw; left: 3vw; width: auto; top: auto; bottom: 2vh; transform: translateY(8%) scale(.96); }
+    #scroll.show { transform: none; }
+    #scroll .pad { padding: 32px 30px 34px; }
+    #scroll h1 { font-size: 32px; margin-bottom: 8px; }
+    #scroll p { min-height: 60px; margin-bottom: 10px; }
+    #scroll button { font: 16px/22px "RS Quill 8", monospace; padding-left: 22px; }
+    #hint { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+<canvas id="view" role="img" aria-label="A torch-lit castle hall"></canvas>
+
+<aside id="scroll" aria-live="polite">
+  <canvas></canvas>
+  <div class="pad">
+    <h1>Wizard</h1>
+    <p id="say"></p>
+    <ol id="opts">
+      <li><button data-n="1">Lorem ipsum dolor sit amet</button></li>
+      <li><button data-n="2">Consectetur adipiscing elit</button></li>
+      <li><button data-n="3">Sed do eiusmod tempor</button></li>
+      <li><button data-n="4">Ut labore et dolore magna</button></li>
+    </ol>
+  </div>
+</aside>
+
+<div id="door">
+  <button id="ring" aria-label="Knock on the door"><canvas></canvas></button>
+  <div id="hint">Knock.</div>
+</div>
+<button id="skip">Skip &gt;</button>
+
+<script src="main.js"></script>
+</body>
+</html>
